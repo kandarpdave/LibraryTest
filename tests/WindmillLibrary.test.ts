@@ -9,7 +9,7 @@ describe('WindmillLibrary basic functionality', () => {
 
   beforeEach(() => {
     library = new WindmillLibrary();
-    user = { userId: 1, name: 'Alice' };
+    user = { userId: 1, name: 'Alice', email: 'alice@example.com' };
     book = { bookId: 1, name: 'Hobbit', author: 'Tolkien', checkedOutByUser: null };
     library.registerUser(user);
     library.addBook(book);
@@ -46,7 +46,7 @@ describe('WindmillLibrary basic functionality', () => {
 
   test('checkoutBook throws if already checked out', () => {
     library.checkoutBook(book, user);
-    const anotherUser: User = { userId: 2, name: 'Bob' };
+    const anotherUser: User = { userId: 2, name: 'Bob', email: 'bob@example.com' };
     library.registerUser(anotherUser);
     expect(() => library.checkoutBook(book, anotherUser)).toThrow('The book has been checked out by someone.');
   });
